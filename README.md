@@ -5,7 +5,7 @@ This system allows you to encode and decode a few classical ciphers.
 * Caessar
 * Atbash
 * Affine
-* Vigene
+* Vigenere
 
 ### Input parameters for user to choose
 * Which cipher should be used
