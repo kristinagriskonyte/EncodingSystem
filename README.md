@@ -1,5 +1,5 @@
 # EncodingSystem
-This system allows you to encode and decode a few classical ciphers.
+This system allows you to encode and decode a message using classical ciphers.
 
 ### Ciphers
 * Caessar
