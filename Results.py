@@ -14,5 +14,5 @@ def results(text, inputEncodeDecode, Cipher, result):
         print("Affine cipher was used")
     elif Cipher == 'V':
         print("Vigenere cipher was used")
-    print("Your result is", result)
+    print("Your result is:", result)
     print("Here is" , len(text) , "symbols in given text")

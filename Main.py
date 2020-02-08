@@ -7,6 +7,7 @@ from VigenereCipher import *
 from Wiki import *
 from Results import *
 
+os.chdir("EncodingSystem")
 alphabetDirectory = 'Alphabets/'
 all_files = os.listdir(alphabetDirectory)
 
@@ -17,17 +18,10 @@ while inputCipher!='C' and inputCipher!='At' and inputCipher!='Af' and inputCiph
 
 wiki(inputCipher)
 
-if inputCipher == 'C':  
-    inputEncodeDecode = []
-    inputEncodeDecode = input("Type 'E' to encrypt, 'D' to decrypt or 'B' for brute force: ")
-    while inputEncodeDecode!='E' and inputEncodeDecode!='D' and inputEncodeDecode!='B':
-        inputEncodeDecode = input("You have selected unknown command. Please, type 'E' to encrypt or 'D' to decrypt or 'B' for brute force: ")
-
-if inputCipher == 'At' or inputCipher == 'Af' or inputCipher == 'V':
-    inputEncodeDecode = []
-    inputEncodeDecode = input("Type 'E' to encrypt, 'D' to decrypt: ")
-    while inputEncodeDecode!='E' and inputEncodeDecode!='D' and inputEncodeDecode!='B':
-        inputEncodeDecode = input("You have selected unknown command. Please, type 'E' to encrypt or 'D' to decrypt: ")
+inputEncodeDecode = []
+inputEncodeDecode = input("Type 'E' to encrypt, 'D' to decrypt: ")
+while inputEncodeDecode!='E' and inputEncodeDecode!='D' and inputEncodeDecode!='B':
+    inputEncodeDecode = input("You have selected unknown command. Please, type 'E' to encrypt or 'D' to decrypt: ")
 
 inputTextType = []
 inputTextType = input("Type 'S' to select text from file or 'C' to type text in command line: ")
@@ -52,7 +46,7 @@ else:
     inputAlphabetChosen = input("Which alphabet you want to use: " )
     inputAlphabet = open(alphabetDirectory + inputAlphabetChosen, "r", encoding = "utf8").read()
 
-if inputEncodeDecode!='B' and inputCipher == 'C':
+if inputCipher == 'C':
     encodingKey = []
     print("Encoding key should not be longer than: " + str(len(inputAlphabet)))
     encodingKey = int(input("What is your encoding key: " ))
