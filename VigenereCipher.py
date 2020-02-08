@@ -21,7 +21,7 @@ def encodeVigenere(textToEncode, alphabet, vigenereKey):
         if totalKey <= len(textToEncode):
             letterNext = alphabet[totalKey]
         else:
-            letterNext = alphabet[totalKey - len(alphabet)]
+            letterNext = alphabet[(totalKey - len(alphabet)) % len(alphabet)]
         print(letterNext)
         output.append(letterNext)
     return ''.join(output)
@@ -35,7 +35,7 @@ def decodeVigenere(textToDecode, alphabet, vigenereKey):
             if vigenereKey[element] == alpha:
                 subKey = key
         totalKey = textKey - subKey
-        if totalKey <= 0:
+        if totalKey < 0:
             letterNext = alphabet[totalKey + len(alphabet)]
         else:
             letterNext = alphabet[totalKey]

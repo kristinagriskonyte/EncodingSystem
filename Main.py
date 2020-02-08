@@ -1,8 +1,8 @@
 import webbrowser
 import os
-from AffineCipher import *
-from AtbashCipher import *
-from CaessarCipher import *
+from classAffine import *
+from classAtbash import *
+from classCaessar import *
 from VigenereCipher import *
 from Wiki import *
 from Results import *
@@ -104,6 +104,7 @@ if inputCipher == 'At':
 
 if inputCipher == 'V':
     vigenereKey = generateKey(inputText, encodingKeyword).lower()
+    print(vigenereKey)
     alphabet = {k:v for k,v in enumerate(inputAlphabet)}
     if inputEncodeDecode == 'E':
          result = encodeVigenere(inputText, alphabet, vigenereKey)
