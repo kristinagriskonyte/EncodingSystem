@@ -3,7 +3,7 @@ import os
 import affine
 import atbash
 import caessar
-import VigenereCipher
+import vigenere
 import wiki
 import results
 
@@ -29,7 +29,7 @@ while input_text_type != 'S' and input_text_type != 'C':
     input_text_type = input("You have selected unknown command. Please, type 'S' to select text from file or 'C' to type text in command line: ")
 if input_text_type == 'S':
     input_file = input("Type the file name with directory: ")
-    input_text = list(open(inputFile,"r", encoding = "utf8").read().lower())
+    input_text = list(open(input_file,"r", encoding = "utf8").read().lower())
 else:
     input_text = list(input("Input to encrypt or decrypt: ").lower())
 
@@ -97,12 +97,10 @@ if input_cipher == 'At':
         result = Message.decode()
 
 if input_cipher == 'V':
-    vigenereKey = VigenereCipher.generateKey(input_text, encoding_keyword).lower()
-    print(vigenereKey)
-    alphabet = {k:v for k,v in enumerate(input_alphabet)}
+    Message = vigenere.vigenere(input_text, encoding_keyword, input_alphabet)
     if input_encode_decode == 'E':
-         result = VigenereCipher.encodeVigenere(input_text, alphabet, vigenereKey)
-    else:
-        result = VigenereCipher.decodeVigenere(input_text, alphabet, vigenereKey)
+        result = Message.encode()
+    elif input_encode_decode == 'D':
+        result = Message.decode()
 
 results.results(input_text, input_encode_decode, input_cipher, result)
