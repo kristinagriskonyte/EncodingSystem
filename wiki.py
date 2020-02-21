@@ -1,14 +1,16 @@
 import webbrowser
+def directory_establishment(cipher):
+    switcher = {
+        'C':'caessar/',
+        'At':'atbash/',
+        'Af':'affine/',
+        'V': 'vigenere/'
+    }
+    return switcher.get(cipher)
+
 def open_wiki(cipher):
-    if cipher == 'C':
-        print("Read about Caesar cipher to understand how it works")
-        webbrowser.open('https://en.wikipedia.org/wiki/Caesar_cipher')
-    if cipher == 'At':
-        print("Read about Atbash cipher to understand how it works")
-        webbrowser.open('https://en.wikipedia.org/wiki/Atbash')
-    if cipher == 'Af':
-        print("Read about Affine cipher to understand how it works")
-        webbrowser.open('https://en.wikipedia.org/wiki/Affine_cipher')
-    if cipher == 'V':
-        print("Read about Vigenere cipher to understand how it works")
-        webbrowser.open('https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher')
+    directory=directory_establishment(cipher)
+    print("Read about your selected cipher")
+    webbrowser.open(open(directory + "wiki.txt", "r", encoding = "utf8").read())
+
+
