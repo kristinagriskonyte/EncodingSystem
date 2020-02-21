@@ -6,6 +6,7 @@ import caessar
 import vigenere
 import wiki
 import results
+import cipher_directory
 
 os.chdir("EncodingSystem")
 alphabet_directory = 'alphabets/'
@@ -16,7 +17,8 @@ input_cipher = input("Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 
 while input_cipher!='C' and input_cipher!='At' and input_cipher!='Af' and input_cipher!='V':
     input_cipher = input("You have selected unknown command. Please, type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
 
-wiki.open_wiki(input_cipher)
+directory=cipher_directory.cipher_directory(input_cipher)
+wiki.open_wiki(directory)
 
 input_encode_decode = []
 input_encode_decode = input("Type 'E' to encrypt, 'D' to decrypt: ")
