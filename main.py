@@ -76,31 +76,31 @@ if input_cipher == 'V':
   alphabet = {k:v for k,v in enumerate(input_alphabet)}
 
 if input_cipher == 'C':
-    Message = caessar.Caessar(input_text, encoding_key, input_alphabet)
+    message = caessar.caessar(input_text, encoding_key, input_alphabet)
     if input_encode_decode == 'E':
-        result = Message.encode()
+        result = message.encode()
     elif input_encode_decode == 'D':
-        result = Message.decode()
+        result = message.decode()
 
 if input_cipher == 'Af':
-    Message = affine.Affine(input_text, encoding_key1, encoding_key2, input_alphabet)
+    message = affine.affine(input_text, encoding_key1, encoding_key2, input_alphabet)
     if input_encode_decode == 'E':
-        result = Message.encode()
+        result = message.encode()
     elif input_encode_decode == 'D':
-        result = Message.decode()
+        result = message.decode()
 
 if input_cipher == 'At':
-    Message = atbash.Atbash(input_text, input_alphabet)
+    message = atbash.atbash(input_text, input_alphabet)
     if input_encode_decode == 'E':
-        result = Message.encode()
+        result = message.encode()
     elif input_encode_decode == 'D':
-        result = Message.decode()
+        result = message.decode()
 
 if input_cipher == 'V':
-    Message = vigenere.vigenere(input_text, encoding_keyword, input_alphabet)
+    message = vigenere.vigenere(input_text, encoding_keyword, input_alphabet)
     if input_encode_decode == 'E':
-        result = Message.encode()
+        result = message.encode()
     elif input_encode_decode == 'D':
-        result = Message.decode()
+        result = message.decode()
 
 results.results(input_text, input_encode_decode, input_cipher, result)
