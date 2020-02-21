@@ -1,108 +1,108 @@
 import webbrowser
 import os
-from classAffine import *
-from classAtbash import *
-from classCaessar import *
-from VigenereCipher import *
-from Wiki import *
-from Results import *
+import affine
+import atbash
+import caessar
+import VigenereCipher
+import wiki
+import results
 
 os.chdir("EncodingSystem")
-alphabetDirectory = 'Alphabets/'
-all_files = os.listdir(alphabetDirectory)
+alphabet_directory = 'alphabets/'
+all_files = os.listdir(alphabet_directory)
 
-inputCipher = []
-inputCipher = input("Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
-while inputCipher!='C' and inputCipher!='At' and inputCipher!='Af' and inputCipher!='V':
-    inputCipher = input("You have selected unknown command. Please, type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
+input_cipher = []
+input_cipher = input("Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
+while input_cipher!='C' and input_cipher!='At' and input_cipher!='Af' and input_cipher!='V':
+    input_cipher = input("You have selected unknown command. Please, type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
 
-wiki(inputCipher)
+wiki.open_wiki(input_cipher)
 
-inputEncodeDecode = []
-inputEncodeDecode = input("Type 'E' to encrypt, 'D' to decrypt: ")
-while inputEncodeDecode!='E' and inputEncodeDecode!='D' and inputEncodeDecode!='B':
-    inputEncodeDecode = input("You have selected unknown command. Please, type 'E' to encrypt or 'D' to decrypt: ")
+input_encode_decode = []
+input_encode_decode = input("Type 'E' to encrypt, 'D' to decrypt: ")
+while input_encode_decode!='E' and input_encode_decode!='D' and input_encode_decode!='B':
+    input_encode_decode = input("You have selected unknown command. Please, type 'E' to encrypt or 'D' to decrypt: ")
 
-inputTextType = []
-inputTextType = input("Type 'S' to select text from file or 'C' to type text in command line: ")
-while inputTextType != 'S' and inputTextType != 'C':
-    inputTextType = input("You have selected unknown command. Please, type 'S' to select text from file or 'C' to type text in command line: ")
-if inputTextType == 'S':
-    inputFile = input("Type the file name with directory: ")
-    inputText = list(open(inputFile,"r", encoding = "utf8").read().lower())
+input_text_type = []
+input_text_type = input("Type 'S' to select text from file or 'C' to type text in command line: ")
+while input_text_type != 'S' and input_text_type != 'C':
+    input_text_type = input("You have selected unknown command. Please, type 'S' to select text from file or 'C' to type text in command line: ")
+if input_text_type == 'S':
+    input_file = input("Type the file name with directory: ")
+    input_text = list(open(inputFile,"r", encoding = "utf8").read().lower())
 else:
-    inputText = list(input("Input to encrypt or decrypt: ").lower())
+    input_text = list(input("Input to encrypt or decrypt: ").lower())
 
-inputAlphabet=[]
-inputAlphabet = input("Do you have your own alphabet? 'Y' - yes, 'N' - No: " )
-while inputAlphabet != 'Y' and inputAlphabet != 'N':
-    inputAlphabet=input("You have selected unknown command. Please, type 'Y' if you want to use your alphabet or 'N' to select from existing alphabets: ")
-if inputAlphabet == 'Y':
-    inputAlphabetPath = input("Please, type alphabet file name with directory: ")
-    inputAlphabet = open(inputAlphabetPath, "r", encoding = "utf8").read()
+input_alphabet=[]
+input_alphabet = input("Do you have your own alphabet? 'Y' - yes, 'N' - No: " )
+while input_alphabet != 'Y' and input_alphabet != 'N':
+    input_alphabet=input("You have selected unknown command. Please, type 'Y' if you want to use your alphabet or 'N' to select from existing alphabets: ")
+if input_alphabet == 'Y':
+    input_alphabet_path = input("Please, type alphabet file name with directory: ")
+    input_alphabet = open(input_alphabet_path, "r", encoding = "utf8").read()
 else:
     print("See the list of alphabets: ")
     print(*all_files, sep='\n')
-    inputAlphabetChosen = input("Which alphabet you want to use: " )
-    inputAlphabet = open(alphabetDirectory + inputAlphabetChosen, "r", encoding = "utf8").read()
+    input_alphabet_chosen = input("Which alphabet you want to use: " )
+    input_alphabet = open(alphabet_directory + input_alphabet_chosen, "r", encoding = "utf8").read()
 
-if inputCipher == 'C':
-    encodingKey = []
-    print("Encoding key should not be longer than: " + str(len(inputAlphabet)))
-    encodingKey = int(input("What is your encoding key: " ))
-    while encodingKey>len(inputAlphabet):
-        print("Encoding key should not be longer than: " + str(len(inputAlphabet)))
-        encodingKey = int(input("What is your encoding key: " ))
+if input_cipher == 'C':
+    encoding_key = []
+    print("Encoding key should not be longer than: " + str(len(input_alphabet)))
+    encoding_key = int(input("What is your encoding key: " ))
+    while encoding_key>len(input_alphabet):
+        print("Encoding key should not be longer than: " + str(len(input_alphabet)))
+        encoding_key = int(input("What is your encoding key: " ))
 
-if inputCipher == 'Af':
-    encodingKey1 = []
-    encodingKey2 = []
-    print("Encoding key1 should not be longer than: " + str(len(inputAlphabet)))
-    encodingKey1 = int(input("What is your encoding key1: " ))
-    while encodingKey1>len(inputAlphabet):
-        print("Encoding key1 should not be longer than: " + str(len(inputAlphabet)))
-        encodingKey1 = int(input("What is your encoding key1: " ))
-    print("Encoding key2 should not be longer than: " + str(len(inputAlphabet)))
-    encodingKey2 = int(input("What is your encoding key2: " ))
-    while encodingKey2>len(inputAlphabet):
-        print("Encoding key2 should not be longer than: " + str(len(inputAlphabet)))
-        encodingKey2 = int(input("What is your encoding key2: " ))
+if input_cipher == 'Af':
+    encoding_key1 = []
+    encoding_key2 = []
+    print("Encoding key1 should not be longer than: " + str(len(input_alphabet)))
+    encoding_key1 = int(input("What is your encoding key1: " ))
+    while encoding_key1>len(input_alphabet):
+        print("Encoding key1 should not be longer than: " + str(len(input_alphabet)))
+        encoding_key1 = int(input("What is your encoding key1: " ))
+    print("Encoding key2 should not be longer than: " + str(len(input_alphabet)))
+    encoding_key2 = int(input("What is your encoding key2: " ))
+    while encoding_key2>len(input_alphabet):
+        print("Encoding key2 should not be longer than: " + str(len(input_alphabet)))
+        encoding_key2 = int(input("What is your encoding key2: " ))
 
-if inputCipher == 'V':
-    encodingKeyword = str(input("Please type your encoding keyword: " ))
-    print(encodingKeyword)
+if input_cipher == 'V':
+    encoding_keyword = str(input("Please type your encoding keyword: " ))
+    print(encoding_keyword)
 
-if inputCipher == 'V':
-  alphabet = {k:v for k,v in enumerate(inputAlphabet)}
+if input_cipher == 'V':
+  alphabet = {k:v for k,v in enumerate(input_alphabet)}
 
-if inputCipher == 'C':
-    Message = Caessar(inputText, encodingKey, inputAlphabet)
-    if inputEncodeDecode == 'E':
+if input_cipher == 'C':
+    Message = caessar.Caessar(input_text, encoding_key, input_alphabet)
+    if input_encode_decode == 'E':
         result = Message.encode()
-    elif inputEncodeDecode == 'D':
+    elif input_encode_decode == 'D':
         result = Message.decode()
 
-if inputCipher == 'Af':
-    Message = Affine(inputText, encodingKey1, encodingKey2, inputAlphabet)
-    if inputEncodeDecode == 'E':
+if input_cipher == 'Af':
+    Message = affine.Affine(input_text, encoding_key1, encoding_key2, input_alphabet)
+    if input_encode_decode == 'E':
         result = Message.encode()
-    elif inputEncodeDecode == 'D':
+    elif input_encode_decode == 'D':
         result = Message.decode()
 
-if inputCipher == 'At':
-    Message = Atbash(inputText, inputAlphabet)
-    if inputEncodeDecode == 'E':
+if input_cipher == 'At':
+    Message = atbash.Atbash(input_text, input_alphabet)
+    if input_encode_decode == 'E':
         result = Message.encode()
-    elif inputEncodeDecode == 'D':
+    elif input_encode_decode == 'D':
         result = Message.decode()
 
-if inputCipher == 'V':
-    vigenereKey = generateKey(inputText, encodingKeyword).lower()
+if input_cipher == 'V':
+    vigenereKey = VigenereCipher.generateKey(input_text, encoding_keyword).lower()
     print(vigenereKey)
-    alphabet = {k:v for k,v in enumerate(inputAlphabet)}
-    if inputEncodeDecode == 'E':
-         result = encodeVigenere(inputText, alphabet, vigenereKey)
+    alphabet = {k:v for k,v in enumerate(input_alphabet)}
+    if input_encode_decode == 'E':
+         result = VigenereCipher.encodeVigenere(input_text, alphabet, vigenereKey)
     else:
-        result = decodeVigenere(inputText, alphabet, vigenereKey)
+        result = VigenereCipher.decodeVigenere(input_text, alphabet, vigenereKey)
 
-results(inputText, inputEncodeDecode, inputCipher, result)
+results.results(input_text, input_encode_decode, input_cipher, result)
