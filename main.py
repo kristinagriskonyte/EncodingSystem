@@ -7,23 +7,26 @@ import vigenere
 import wiki
 import results
 import cipher_directory
+import ast
 
 os.chdir("EncodingSystem")
 alphabet_directory = 'alphabets/'
 all_files = os.listdir(alphabet_directory)
 
+constants = ast.literal_eval(open("constants.txt", "r", encoding = "utf8").read())
+
 input_cipher = []
-input_cipher = input("Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
 while input_cipher!='C' and input_cipher!='At' and input_cipher!='Af' and input_cipher!='V':
-    input_cipher = input("You have selected unknown command. Please, type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ")
+    input_cipher = input(constants['cipher'])
 
 directory=cipher_directory.cipher_directory(input_cipher)
 wiki.open_wiki(directory)
 
 input_encode_decode = []
-input_encode_decode = input("Type 'E' to encrypt, 'D' to decrypt: ")
-while input_encode_decode!='E' and input_encode_decode!='D' and input_encode_decode!='B':
-    input_encode_decode = input("You have selected unknown command. Please, type 'E' to encrypt or 'D' to decrypt: ")
+while input_encode_decode!='E' and input_encode_decode!='D':
+    input_encode_decode = input(constants['encode_decode'])
+
+
 
 input_text_type = []
 input_text_type = input("Type 'S' to select text from file or 'C' to type text in command line: ")

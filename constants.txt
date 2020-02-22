@@ -1,0 +1,3 @@
+{'cipher':"Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ",
+'encode_decode':"Type 'E' to encrypt, 'D' to decrypt: "
+}
