@@ -1,3 +1,5 @@
 {'cipher':"Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ",
-'encode_decode':"Type 'E' to encrypt, 'D' to decrypt: "
+'encode_decode':"Type 'E' to encrypt, 'D' to decrypt: ",
+'text_type':"Type 'S' to select text from file or 'C' to type text in command line: ",
+'alphabet':"Do you have your own alphabet? 'Y' - yes, 'N' - No: "
 }

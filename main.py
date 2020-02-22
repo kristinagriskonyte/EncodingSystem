@@ -26,22 +26,18 @@ input_encode_decode = []
 while input_encode_decode!='E' and input_encode_decode!='D':
     input_encode_decode = input(constants['encode_decode'])
 
-
-
 input_text_type = []
-input_text_type = input("Type 'S' to select text from file or 'C' to type text in command line: ")
 while input_text_type != 'S' and input_text_type != 'C':
-    input_text_type = input("You have selected unknown command. Please, type 'S' to select text from file or 'C' to type text in command line: ")
+    input_text_type = input(constants['text_type'])
 if input_text_type == 'S':
-    input_file = input("Type the file name with directory: ")
+    input_file = input(constants['directory'])
     input_text = list(open(input_file,"r", encoding = "utf8").read().lower())
 else:
     input_text = list(input("Input to encrypt or decrypt: ").lower())
 
 input_alphabet=[]
-input_alphabet = input("Do you have your own alphabet? 'Y' - yes, 'N' - No: " )
 while input_alphabet != 'Y' and input_alphabet != 'N':
-    input_alphabet=input("You have selected unknown command. Please, type 'Y' if you want to use your alphabet or 'N' to select from existing alphabets: ")
+    input_alphabet=input(constants['alphabet'])
 if input_alphabet == 'Y':
     input_alphabet_path = input("Please, type alphabet file name with directory: ")
     input_alphabet = open(input_alphabet_path, "r", encoding = "utf8").read()
