@@ -33,18 +33,18 @@ if input_text_type == 'S':
     input_file = input(constants['directory'])
     input_text = list(open(input_file,"r", encoding = "utf8").read().lower())
 else:
-    input_text = list(input("Input to encrypt or decrypt: ").lower())
+    input_text = list(input(constants['text']).lower())
 
 input_alphabet=[]
 while input_alphabet != 'Y' and input_alphabet != 'N':
     input_alphabet=input(constants['alphabet'])
 if input_alphabet == 'Y':
-    input_alphabet_path = input("Please, type alphabet file name with directory: ")
+    input_alphabet_path = input(constants['alphabet_file'])
     input_alphabet = open(input_alphabet_path, "r", encoding = "utf8").read()
 else:
     print("See the list of alphabets: ")
     print(*all_files, sep='\n')
-    input_alphabet_chosen = input("Which alphabet you want to use: " )
+    input_alphabet_chosen = input(constants['choose_alphabet'])
     input_alphabet = open(alphabet_directory + input_alphabet_chosen, "r", encoding = "utf8").read()
 
 if input_cipher == 'C':

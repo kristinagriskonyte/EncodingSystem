@@ -1,5 +1,9 @@
 {'cipher':"Type 'C' to use Casear cipher, 'At' to use Atbash cipher, 'Af' to use Affine cipher or 'V' to use Vigenere cipher: ",
 'encode_decode':"Type 'E' to encrypt, 'D' to decrypt: ",
 'text_type':"Type 'S' to select text from file or 'C' to type text in command line: ",
-'alphabet':"Do you have your own alphabet? 'Y' - yes, 'N' - No: "
+'alphabet':"Do you have your own alphabet? 'Y' - yes, 'N' - No: ",
+'directory':"Type the file name with directory: ",
+'alphabet_file':"Please, type alphabet file name with directory: ",
+'text':"Input to encrypt or decrypt: ",
+'choose_alphabet':"Which alphabet you want to use: " 
 }
